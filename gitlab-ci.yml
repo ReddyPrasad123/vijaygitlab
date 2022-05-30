@@ -1,0 +1,83 @@
+variables:
+  APP_NAME: gcm-orderimport-split-process
+  CI_PROJECT_NAME: gcm-orderimport-split-process
+  SCM_PROJECT_NAME: 'Abacus_gcm-orderimport-split-process'
+  SCM_PROJECT_VERSION: 'Dev_Code_gcm-orderimport-split-process'
+
+
+include:
+  - project: gcbs/ordermanagement/om-gateway/commoncomponents/abacustemplates/abacus-template
+    ref: pcfpipeline
+    file: pcf-multiDeployment.yml
+
+pcf_ge1:
+  extends: .deploy_nonprod
+  variables:
+    env: ge1
+    deployName: gcm-orderimport-split-process-ge1
+
+pcf_ge2:
+  extends: .deploy_nonprod
+  variables:
+    env: ge2
+    deployName: gcm-orderimport-split-process-ge2
+
+pcf_ge3:
+  extends: .deploy_nonprod
+  variables:
+    env: ge3
+    deployName: gcm-orderimport-split-process-ge3
+
+pcf_ge4:
+  extends: .deploy_nonprod
+  variables:
+    env: ge4
+    deployName: gcm-orderimport-split-process-ge4
+
+pcf_pc1:
+  extends: .deploy_pc1
+  variables:
+    env: pc1
+    deployName: gcm-orderimport-split-process
+
+pcf_s3b:
+  extends: .deploy_s3b
+  variables:
+    env: s3b
+    deployName: gcm-orderimport-split-process
+
+resubmit-pcf_ge1:
+  extends: .deploy_nonprod
+  variables:
+    env: resubmit-ge1
+    deployName: gcm-orderimport-resubmit-split-process-ge1
+
+resubmit-pcf_ge2:
+  extends: .deploy_nonprod
+  variables:
+    env: resubmit-ge2
+    deployName: gcm-orderimport-resubmit-split-process-ge2
+
+resubmit-pcf_ge3:
+  extends: .deploy_nonprod
+  variables:
+    env: resubmit-ge3
+    deployName: gcm-orderimport-resubmit-split-process-ge3
+
+resubmit-pcf_ge4:
+  extends: .deploy_nonprod
+  variables:
+    env: resubmit-ge4
+    deployName: gcm-orderimport-resubmit-split-process-ge4
+
+resubmit-pcf_pc1:
+  extends: .deploy_pc1
+  variables:
+    env: resubmit-pc1
+    deployName: gcm-orderimport-resubmit-split-process
+
+resubmit-pcf_s3b:
+  extends: .deploy_s3b
+  variables:
+    env: resubmit-s3b
+    deployName: gcm-orderimport-resubmit-split-process
